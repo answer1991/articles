@@ -275,7 +275,7 @@ func Reconcile(crName string) error {
 
 
 
-##### 面向 Kubernetes 变成 和 Operator  的优势总结
+##### 面向 Kubernetes 编程 和 Operator  的优势总结
 
 1. 统一的信息获取源和统一的接口： Kube-Apiserver 就像是一个大的信息流转中心。所有的组件（“厨师长”）都通过这个中心上传他负责的资源（CR，Deployment，Pod都是 Kubernetes 的资源）的信息，同时，他也通过这个接口，去感知其它资源状态的变化，如果这些变化是他感兴趣的，那么他就开始工作（“厨师长” 开始工作）。
 2. 构建在 Kubernetes 核心组件以及 社区通用的 Operator 之上：站在巨人的肩膀上能让我们的工作更加的减负同时达到更加理想的效果。上文中，我们的 Operator 可能在依赖 Deployment 之后，他负责的 “菜”（Pod）就自带副本保持功能。同时，假如我们的应用（DB，Web）要依赖社区的 MySQL 数据库，那么我们的应用 Operator（Web + DB） 可以通过社区的 MySQL-Operator 提供的 CR 快速建出 MySQL 实例，然后再使用 Deployment 建出 Web。
